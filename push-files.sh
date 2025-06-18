@@ -1,26 +1,23 @@
 #!/bin/bash
 
 BRANCH="main"
-REPO_DIR="$(pwd)"  # Current directory
 
-cd "$REPO_DIR"
-
-# Make sure you're on the correct branch
+# Make sure you're on the main branch
 git checkout "$BRANCH"
 
-# Stage and commit each file individually
-find . -type f ! -path "./.git/*" | while read file; do
-    # Skip untracked folders like archives, temp, or hidden files (optional filter)
-    if [[ "$file" == *.sh ]]; then
-        continue  # Skip the script itself
-    fi
+# Loop through .pka files only
+find . -type f -name "*.pka" ! -path "./.git/*" | while read file; do
+    echo "Processing: $file"
 
+    # Stage the file
     git add "$file"
+
+    # Commit the file (if there's anything new)
     git commit -m "Add file: $file"
 
-    # Rebase in case remote has new commits
+    # Pull with rebase to avoid push conflicts
     git pull --rebase origin "$BRANCH"
 
-    # Push the new commit
+    # Push to remote
     git push origin "$BRANCH"
 done
