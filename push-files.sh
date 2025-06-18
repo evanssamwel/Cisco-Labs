@@ -1,19 +1,26 @@
 #!/bin/bash
 
-# Set the branch name
-BRANCH="main"  # or "master" if that's your default
+BRANCH="main"
+REPO_DIR="$(pwd)"  # Current directory
 
-# Change to your project directory
-cd /path/to/your/project
+cd "$REPO_DIR"
 
-# Loop through all files (excluding .git folder)
+# Make sure you're on the correct branch
+git checkout "$BRANCH"
+
+# Stage and commit each file individually
 find . -type f ! -path "./.git/*" | while read file; do
-    # Add the file
-    git add "$file"
+    # Skip untracked folders like archives, temp, or hidden files (optional filter)
+    if [[ "$file" == *.sh ]]; then
+        continue  # Skip the script itself
+    fi
 
-    # Commit the file with its path as the message
+    git add "$file"
     git commit -m "Add file: $file"
 
-    # Push to the repository
+    # Rebase in case remote has new commits
+    git pull --rebase origin "$BRANCH"
+
+    # Push the new commit
     git push origin "$BRANCH"
 done
