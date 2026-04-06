@@ -1,0 +1,1524 @@
+<!DOCTYPE html><html><head>
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 1rem;
+      }
+      ol,
+      ul {
+        margin-bottom: 0in;
+      }
+      table {
+        margin-top: 1rem;
+        border: 1px solid gray;
+        width: 7in;
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > .openTableTextBox__table-header-data {
+        text-align: center;
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        margin-left: 0in;
+        text-align: center;
+        line-height: 115%;
+        page-break-after: avoid;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        font-weight: bold;
+        background: #dbe5f1;
+        padding: 0.5rem;
+      }
+      .openTableTextBox__answerText
+        table
+        > thead
+        > tr
+        > .openTableTextBox__table-header-data {
+        background: #f2dbdb !important;
+      }
+      .openTextBox__textArea-container {
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        width: 50%;
+      }
+      .openTableTextBox__fieldset {
+        padding: 5px;
+      }
+      td {
+        margin-top: 3pt;
+        margin-right: 0in;
+        margin-bottom: 3pt;
+        margin-left: 0in;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        width: 98.85pt;
+        border: solid windowtext 1pt;
+        border-top: none;
+        padding: 0.7pt 5.75pt 0.7pt 5.75pt;
+      }
+      textarea {
+        width: 100%;
+      }
+      .answergray {
+        padding: 0.2rem;
+      }
+
+      .openTableTextBox__widget {
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        margin-left: 0.25in;
+      }
+
+      .show-answer,
+      .hide-answer {
+        padding: 0.5rem 1rem;
+        background-color: #3d692b;
+        color: #fff;
+        border: 0px;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .openTextBoxController__button-container {
+        display: flex;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .openTextBoxController__button-container .btn-text {
+        margin: 10px;
+      }
+
+      .btn-text {
+        border: 0px;
+        padding: 0.5rem 1rem;
+        background-color: #3d692b;
+        color: #fff;
+        border-radius: 0;
+        cursor: pointer;
+      }
+
+      .u-display-none {
+        display: none;
+      }
+      .openTextBox__postText, openTableTextBox__postText {
+        margin-top: 0.5rem;
+      }
+      .edit-comment {
+        display: none;
+      }
+      .js-heading-inner {
+        display: none;
+      }
+      .block__title-inner,
+      .article__title-inner {
+        display: block;
+        font-size: 1.5em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+      h2{
+        font-size: 1.25em;
+      }
+      h3{
+        font-size: 1.125em;
+      }
+      .table
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > th {
+        border: solid windowtext 1pt;
+      }
+      table tbody tr th, table thead tr th{
+        border: solid windowtext 1pt;
+        background-color: #d6d8dc;
+      }
+      .openTableTextBox__answerText
+        table
+        > thead
+        > tr
+        > .openTableTextBox__table-header-data {
+        background: #f2dbdb !important;
+      }
+      .command-output > .table-inner > .table-wrapper > .table-widget > table,
+      .command-output
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > td,
+      .command-output
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > th {
+        border: none !important;
+        text-align: right !important;
+      }
+      .simple-table > .table-inner > .table-wrapper{
+        margin-left: 1.5rem;
+      }
+      .openTextBox__widget {
+        margin-left: 1.5rem;
+      }
+      img {
+        width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        margin-left: 3rem;
+      }
+      .answergray {
+        background-color: #ccc;
+      }
+      .openTableTextBox__widget > .answergray {
+        background-color: #fff !important;
+      }
+      li > ul,ol > li{
+        margin-left: 0px !important;
+      }
+      img {
+        width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        margin-left: 3rem;
+      }
+      
+      .component__title{
+        font-family: inherit;
+        font-size: 1.65em;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .component__body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .accessibility-completion-indicator{
+        display: none;
+      }
+
+      .check__hidden {
+        display: none;
+      }
+
+      .check__button {
+        border: none;
+        border-radius: 6px !important;
+        background-color: #6abf4b;
+        color: #fff;
+        min-width: 100px;
+        margin: 0.625rem 0;
+        padding: 0.7rem;
+      }
+
+      .check__widget .check__solution .DevConfigGray {
+        background-color: rgb(214,216,220);
+        font-weight: bold;
+      }
+
+      .check-inner .check__widget .check__solution .DevConfigs {
+        margin: 0px;
+        line-height: 115%;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .check__solution  {
+        line-height: 1.5;
+      }
+      .mcq__inner .mcq__widget .mcq__widget-inner {
+        margin-block: 1rem;
+      }
+      .mcq__inner .mcq__widget .mcq__item {
+        display: flex;
+        gap: 0.2rem;
+      }
+      .mcq__inner .mcq__widget .mcq__item .mcq__item-label .mcq__item-text .screenReader-position-text{
+        display: none;
+      }
+      .opentabletextbox-inner .opentabletextBox__widget .openTableTextBox__answerText.answergray {
+        background-color: transparent;
+      }
+      .openTextBox__inner .openTextBox__widget .answergray.is-graphic-in-openTextBox{
+        background-color: transparent;
+      }
+      .openTextBox__inner .openTextBox__widget .answergray.is-graphic-in-openTextBox img{
+        margin-block: 1rem;
+        margin-left: initial;
+      }
+      .component__content .component__body-inner .pageTracer-h4-title-hide {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        font-size: 0px;
+        color: rgb(var(--neutral-2));
+        font-weight: normal;
+      }
+      .table-inner .table__widget table tr.TableHeading th, .table-inner .table__widget table tr.TableHeading td, .table-inner .table__widget table tr td.TableHeading, .opentabletextbox-table thead tr.TableHeading th, .opentabletextbox-table tbody tr.TableHeading td, .opentabletextbox-table tbody tr td.TableHeading {
+        background-color: #d6d8dc;
+        text-align: center;
+        font-weight: bold;
+      }
+      .component__content .component__body-inner .CMD, .component__content .component__body-inner .CMDOutput, .component__content .component__body-inner .CMDOutput__table{
+        margin-top: 4px;
+        margin-inline-end: 0px;
+        margin-bottom: 4px;
+        margin-inline-start: 30px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      [dir="rtl"] .component__content .component__body-inner .CMDOutput__table span {
+        direction: ltr;
+        display: inline-block;
+      }
+      .openTextBox__inner .openTextBox__widget .CMD, .openTextBox__inner .openTextBox__widget .CMDOutput{
+        margin-top: 4px;
+        margin-inline-end: 0px;
+        margin-bottom: 4px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .openTextBox__inner .openTextBox__widget .DnTbold, .openTextBox__inner .openTextBox__widget .BodyTextL25Bold, .component__content .component__body-inner .BodyTextL25Bold, .component__content .component__body-inner .DnTbold, .table-inner .table__widget table tr .DnTbold {
+        font-weight: bold;
+      }
+      .component__content .component__body-inner .SubStepNum {
+        text-indent: -25.5px;
+        margin-inline-start: 50px;
+      }
+      .component__content .component__body-inner .BodyTextL50 {
+        margin-inline-start: 30px;
+      }
+      .component__content .component__body-inner .Bulletlevel1 {
+        text-indent: -19px;
+        margin-inline-start: 48px;
+      }
+      .component__content .component__body-inner .Bulletlevel2 {
+          text-indent: -19px;
+          margin-inline-start: 72px;
+      }
+      .openTextBox__inner .openTextBox__widget .ReflectionQ, .component__content .component__body-inner .SubStepAlpha {
+          text-indent: -25.5px;
+          margin-inline-start: 30px;
+      }
+    </style>
+
+</head><body><!---->
+            <div class="article bfcdc034-fc27-4293-b8f4-1c949b7f2e9c remove-padding-top remove-padding-bottom ">
+                <div class="article__inner">
+                <div class=" no-adaptive-scroll">
+                    <!--?lit$410687573$-->
+                        <div class=""> 
+                            <base-view type="article" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="article__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="article__header ">
+              <div class="article__header-inner ">
+                  
+                    <!--?lit$410687573$--> <div class=" article__title ">
+                      <!--?lit$410687573$--><heading-view aria-hidden="true" id="bfcdc034-fc27-4293-b8f4-1c949b7f2e9c-heading-view" headingtitle="Lab - Create Your Personal Code of Ethical Conduct" modelid="bfcdc034-fc27-4293-b8f4-1c949b7f2e9c" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="js-heading is-incomplete">
+        <div class="js-heading-inner" role="heading" id="article-heading" aria-level="2">
+        <span class="aria-label"> <!--?lit$410687573$-->Incomplete &nbsp;<!--?lit$410687573$-->Lab - Create Your Personal Code of Ethical Conduct</span>
+        </div>
+      </div>
+    </heading-view>
+                        <div tabindex="0" role="heading" class="article__title-inner " aria-level="2">
+                        <span class="accessibility-completion-indicator"><!--?lit$410687573$-->Incomplete </span>
+                        <!--?lit$410687573$-->Lab - Create Your Personal Code of Ethical Conduct</div>
+                      </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                            <div class="block__container " style="">
+                                <!--?lit$410687573$--><!---->
+                                    <block-view modelid="ad01bd7c-6185-423c-8154-93bec51649e8" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="ad01bd7c-6185-423c-8154-93bec51649e8" class="ad01bd7c-6185-423c-8154-93bec51649e8 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="ad01bd7c-6185-423c-8154-93bec51649e8" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="4812012e-a57d-4aa7-ac3a-abf6e4b7dc32" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="4812012e-a57d-4aa7-ac3a-abf6e4b7dc32" class="component text 4812012e-a57d-4aa7-ac3a-abf6e4b7dc32  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h2>Objectives</h2> <p class="BodyTextL25Bold">Part 1: Research Approaches to Ethical Decision Making</p> <p class="BodyTextL25Bold">Part 2: Research Code of Ethics</p> <p class="BodyTextL25Bold">Part 3: Develop Your Own Personal Code of Ethical Conduct</p> <h2>Background / Scenario</h2> <p class="BodyTextL25">When confronted with an ethical dilemma, what do you consider when making a decision?</p> <p class="BodyTextL25">Suppose you find a new USB 3.0 flash drive in the computer lab, what would you do? A student in your class says they found a site on the internet that has all of the class exams and quizzes with answers, what would you do? </p> <p class="BodyTextL25">Working in Cybersecurity is not always about stopping cyber attacks. As a Cybersecurity specialist, your organization may entrust you with some of the most sensitive data. As a result, you will be confronted with challenging ethical dilemmas, which may not have an easy or clear answer. For example, when researching a security breach, are the personal devices of employees and their personal content included? </p> <p class="BodyTextL25">The focus of this lab is to research approaches or perspectives for ethical decision making. Next, you will research code of ethics and finally you will create your own personal code of ethical conduct.</p> <h2>Required Resources</h2> <p class="Bulletlevel1"><span style="font-size:7.0pt;font-family:Webdings">=</span><span>&nbsp;&nbsp;</span>PC or mobile device with Internet access</p> <h2>Instructions</h2> <h2>Part 1: Research Approaches to Ethical Decision Making</h2> <p class="BodyTextL25">There are several approaches or perspectives on Ethical Decision Making, including Utilitarian ethics, the Rights approach and the Common Good approach. Other ethical decision models include the Fairness or Justice approach as well as the Virtue approach. </p> <p class="BodyTextL25">In this part, you will research each ethical decision model or framework and then formulate the underlying principle from that approach. </p> <p class="BodyTextL25">Use an internet browser to research approaches to ethical decision making.</p> <h3>Step 1: Research Utilitarian ethics</h3> <h4 class="pageTracer-h4-title-hide">Question:</h4></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="bf26446d-03b1-47b7-945c-ac112a7d46f0" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="bf26446d-03b1-47b7-945c-ac112a7d46f0" class="bf26446d-03b1-47b7-945c-ac112a7d46f0 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="bf26446d-03b1-47b7-945c-ac112a7d46f0" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="04254a62-a5e6-480d-b807-6d2da3bb0e3d" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="04254a62-a5e6-480d-b807-6d2da3bb0e3d" class="component opentextbox 04254a62-a5e6-480d-b807-6d2da3bb0e3d  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="04254a62-a5e6-480d-b807-6d2da3bb0e3d" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="BodyTextL25">Define the underlying principle for the Utilitarian Ethics approach.</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but should include on maximizing the greatest good for the most people.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="0cbd3f70-c936-4976-b490-8368b64ddac8" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="0cbd3f70-c936-4976-b490-8368b64ddac8" class="0cbd3f70-c936-4976-b490-8368b64ddac8 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="0cbd3f70-c936-4976-b490-8368b64ddac8" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="eb07b38e-535e-49aa-9980-56f89cdfeb7b" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="eb07b38e-535e-49aa-9980-56f89cdfeb7b" class="component text eb07b38e-535e-49aa-9980-56f89cdfeb7b  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h3>Step 2: Research the Rights approach to ethical decision making.</h3> <h4 class="pageTracer-h4-title-hide">Question:</h4></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="0a9713b5-3040-4d56-b35e-88ecc880ca17" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="0a9713b5-3040-4d56-b35e-88ecc880ca17" class="0a9713b5-3040-4d56-b35e-88ecc880ca17 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="0a9713b5-3040-4d56-b35e-88ecc880ca17" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="274a0d6d-9850-4a62-a9ae-12110e69c8c3" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="274a0d6d-9850-4a62-a9ae-12110e69c8c3" class="component opentextbox 274a0d6d-9850-4a62-a9ae-12110e69c8c3  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="274a0d6d-9850-4a62-a9ae-12110e69c8c3" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="BodyTextL25">Define the underlying principle for the Rights approach to ethical decision making.</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but should include the fundamental rights of the individual and how we live our lives as well as respecting others and how they live their lives.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="a9036dbc-c37b-4c6e-b43d-ea2c02418e20" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="a9036dbc-c37b-4c6e-b43d-ea2c02418e20" class="a9036dbc-c37b-4c6e-b43d-ea2c02418e20 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="a9036dbc-c37b-4c6e-b43d-ea2c02418e20" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="df425c3f-c82f-41d0-925d-fcbeffdd78a7" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="df425c3f-c82f-41d0-925d-fcbeffdd78a7" class="component text df425c3f-c82f-41d0-925d-fcbeffdd78a7  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h3>Step 3: Research the Common Good approach to ethical decision making.</h3> <h4 class="pageTracer-h4-title-hide">Question:</h4></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="3a8ea1ed-8c30-4185-99d9-71667108eeec" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="3a8ea1ed-8c30-4185-99d9-71667108eeec" class="3a8ea1ed-8c30-4185-99d9-71667108eeec block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="3a8ea1ed-8c30-4185-99d9-71667108eeec" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="aeb6e944-b19a-4456-b7ec-be1fce324165" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="aeb6e944-b19a-4456-b7ec-be1fce324165" class="component opentextbox aeb6e944-b19a-4456-b7ec-be1fce324165  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="aeb6e944-b19a-4456-b7ec-be1fce324165" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="BodyTextL25">Define the underlying principle for the Common Good approach to ethical decision making.</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but should include the focus of community. Individuals should pursue the values and goals shared by other members of the community.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="f4fbb6f3-a02c-49f1-933d-524eae3a9cec" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="f4fbb6f3-a02c-49f1-933d-524eae3a9cec" class="f4fbb6f3-a02c-49f1-933d-524eae3a9cec block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="f4fbb6f3-a02c-49f1-933d-524eae3a9cec" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="1678da70-e4a0-429b-9417-34b2f46878ce" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="1678da70-e4a0-429b-9417-34b2f46878ce" class="component text 1678da70-e4a0-429b-9417-34b2f46878ce  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h3>Step 4: Research the Fairness or Justice approach to ethical decision making.</h3> <h4 class="pageTracer-h4-title-hide">Question:</h4></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="547e2d2b-2b2b-4014-b62d-68b0fe67f545" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="547e2d2b-2b2b-4014-b62d-68b0fe67f545" class="547e2d2b-2b2b-4014-b62d-68b0fe67f545 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="547e2d2b-2b2b-4014-b62d-68b0fe67f545" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="bf11a365-d81e-4c92-b5f6-60ab957665fd" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="bf11a365-d81e-4c92-b5f6-60ab957665fd" class="component opentextbox bf11a365-d81e-4c92-b5f6-60ab957665fd  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="bf11a365-d81e-4c92-b5f6-60ab957665fd" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="BodyTextL25">Define the underlying principle for the Fairness or Justice approach to ethical decision making.</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but should include the fairness of the outcome. Is the outcome equal for everyone? The outcome should not impose favoritism nor discrimination.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="f1acd788-f010-4a65-b670-684efab2aa39" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="f1acd788-f010-4a65-b670-684efab2aa39" class="f1acd788-f010-4a65-b670-684efab2aa39 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="f1acd788-f010-4a65-b670-684efab2aa39" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="3b9c222c-3224-435d-8986-145712fbf211" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="3b9c222c-3224-435d-8986-145712fbf211" class="component text 3b9c222c-3224-435d-8986-145712fbf211  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h2>Part 2: Research Code of Ethics</h2> <p class="BodyTextL25">Most organizations develop their own code of ethics. Developed by management, this document is based on values and principles to promote the company business with honesty and integrity.</p> <p class="BodyTextL25">In this part, you will research computer code of ethics and cybersecurity code of ethics.</p> <p class="BodyTextL25">Use an internet browser to research code of ethics.</p> <h4 class="pageTracer-h4-title-hide">Question:</h4></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="2f07c878-d06a-405a-9468-567ef90ea2ee" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="2f07c878-d06a-405a-9468-567ef90ea2ee" class="2f07c878-d06a-405a-9468-567ef90ea2ee block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="2f07c878-d06a-405a-9468-567ef90ea2ee" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="af9ce8d2-3c90-4297-b62c-57b0086797d2" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="af9ce8d2-3c90-4297-b62c-57b0086797d2" class="component opentextbox af9ce8d2-3c90-4297-b62c-57b0086797d2  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="af9ce8d2-3c90-4297-b62c-57b0086797d2" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="BodyTextL25A">Based on your research, create a list of at least ten items. The list should be sequential from most important to least important. </p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary, but may include some of the items below: </span></span></span></p><ol><li> Information stored on the computer should be treated as seriously as written or spoken words. </li><li> Respect the privacy of others. </li><li> Creation and usage of malware is illegal and must not be practiced. </li><li> Should not prevent others from accessing public information. </li><li> Overwhelming other’s system with unwanted information is unethical. </li><li> Sending inappropriate messages through email or chat is forbidden. </li><li> Do no harm with a computer </li><li> Comply with legal standards </li><li> Be trustworthy </li><li> Maintain confidentiality</li></ol><p></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="bc836a6a-ddaa-46c4-ac88-1a607e759466" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="bc836a6a-ddaa-46c4-ac88-1a607e759466" class="bc836a6a-ddaa-46c4-ac88-1a607e759466 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="bc836a6a-ddaa-46c4-ac88-1a607e759466" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="162b33e3-0486-44a6-9dea-abb8479a7c35" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="162b33e3-0486-44a6-9dea-abb8479a7c35" class="component text 162b33e3-0486-44a6-9dea-abb8479a7c35  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h2>Part 3: Develop Your Own Personal Code of Ethical Conduct</h2> <p class="BodyTextL25">A code of conduct provides guidelines for acceptable as well as unacceptable specific behaviors.</p> <p class="BodyTextL25">Based on your research, develop a list of your own personal code of ethical conduct.</p> <h4 class="pageTracer-h4-title-hide">Question:</h4></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="21f51eeb-36ff-4a22-8ed5-a45e7058281c" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="21f51eeb-36ff-4a22-8ed5-a45e7058281c" class="21f51eeb-36ff-4a22-8ed5-a45e7058281c block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="21f51eeb-36ff-4a22-8ed5-a45e7058281c" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="28921f0d-3095-4fb0-bb90-0a1e059dcf2a" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="28921f0d-3095-4fb0-bb90-0a1e059dcf2a" class="component opentextbox 28921f0d-3095-4fb0-bb90-0a1e059dcf2a  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="28921f0d-3095-4fb0-bb90-0a1e059dcf2a" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="BodyTextL25">Create a code of ethics list of at least ten items. The list should be sequential from most important to least important. </p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but may include the ten commandments below.</span></span></span></p><ol><li> Thou shalt not use a computer to harm other people. </li><li> Thou shalt not interfere with other people's computer work. </li><li> Thou shalt not snoop around in other people's computer files. </li><li> Thou shalt not use a computer to steal. </li><li> Thou shalt not use a computer to bear false witness. </li><li> Thou shalt not copy or use proprietary software for which you have not paid (without permission). </li><li> Thou shalt not use other people's computer resources without authorization or proper compensation. </li><li> Thou shalt not appropriate other people's intellectual output. </li><li> Thou shalt think about the social consequences of the program you are writing or the system you are designing. </li><li> Thou shalt always use a computer in ways that ensure consideration and respect for other humans</li></ol><p></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="7c600dda-d5b2-49a5-813e-472711d60f8b" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="7c600dda-d5b2-49a5-813e-472711d60f8b" class="7c600dda-d5b2-49a5-813e-472711d60f8b block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="7c600dda-d5b2-49a5-813e-472711d60f8b" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><text-view modelid="cf5cdbbc-6d15-4fb1-9ec5-3175d2b37169" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="cf5cdbbc-6d15-4fb1-9ec5-3175d2b37169" class="component text cf5cdbbc-6d15-4fb1-9ec5-3175d2b37169  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$410687573$--><h2>Reflection Questions</h2></div>
+                      </div>
+                    </div>
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="7993cf81-cf90-4fea-b62f-6f2adcf5a421" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="7993cf81-cf90-4fea-b62f-6f2adcf5a421" class="7993cf81-cf90-4fea-b62f-6f2adcf5a421 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="7993cf81-cf90-4fea-b62f-6f2adcf5a421" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="ee634a1c-6c54-4f8e-98b2-426f88d93c4f" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="ee634a1c-6c54-4f8e-98b2-426f88d93c4f" class="component opentextbox ee634a1c-6c54-4f8e-98b2-426f88d93c4f  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="ee634a1c-6c54-4f8e-98b2-426f88d93c4f" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="ReflectionQ">1.<span>&nbsp;&nbsp;</span>Is there a Cyber Security incident you remember where the company acted ethically or the company acted un-ethically? Explain.</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but may include Equifax data breach.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="8dc47acc-90db-4d71-92c8-460c20bad820" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="8dc47acc-90db-4d71-92c8-460c20bad820" class="8dc47acc-90db-4d71-92c8-460c20bad820 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="8dc47acc-90db-4d71-92c8-460c20bad820" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="b28c89d0-6dd4-4118-ad0e-1de3090b54d0" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="b28c89d0-6dd4-4118-ad0e-1de3090b54d0" class="component opentextbox b28c89d0-6dd4-4118-ad0e-1de3090b54d0  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="b28c89d0-6dd4-4118-ad0e-1de3090b54d0" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="ReflectionQ">2.<span>&nbsp;&nbsp;</span>What is a weakness or drawback to Utilitarian Ethics?</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but may include the lack of fundamental individual rights.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="0b2b7c2f-6f6a-4681-8439-3d37be0accf4" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 6.25%;"><!---->
+                
+                <div data-socialgoodpulse-id="0b2b7c2f-6f6a-4681-8439-3d37be0accf4" class="0b2b7c2f-6f6a-4681-8439-3d37be0accf4 block remove-padding-top remove-padding-bottom ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="0b2b7c2f-6f6a-4681-8439-3d37be0accf4" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$410687573$--><!----><opentextbox-view modelid="3b0113ef-7510-4e90-86cd-32520b5d55ec" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="3b0113ef-7510-4e90-86cd-32520b5d55ec" class="component opentextbox 3b0113ef-7510-4e90-86cd-32520b5d55ec  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="3b0113ef-7510-4e90-86cd-32520b5d55ec" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+                  <!--?lit$410687573$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$410687573$--> <div class="openTextBox__preText"><!--?lit$410687573$--><p class="ReflectionQ">3.<span>&nbsp;&nbsp;</span>Based on your list of code of ethics, which is the most challenging item in your list to implement?</p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$410687573$--><!--?lit$410687573$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$410687573$-->
+                      <!--?lit$410687573$--><p class="BodyTextL25Answer"><span class="AnswerGray"><span><span style="border:none">Answers will vary but may include those items that are out of the control of the cybersecurity specialist. Example when to notify the public of a security incident.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$410687573$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$410687573$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$410687573$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!---->
+                            </div>
+                        </div>
+                        <!--?lit$410687573$-->
+                    </div>
+                </div>
+            </div>
+        <sgpluse-opentextboxcontroller-view modelid="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+            <div class="openTextBoxController__button-container">
+                <button tabindex="0" class="btn-text showhidebtn openTextBoxController__showButton show-answer show"><!--?lit$410687573$-->Show All Answers</button>    
+                <button tabindex="0" class="btn-text showhidebtn openTextBoxController__hideButton hide-answer hide"><!--?lit$410687573$-->Hide All Answers</button>    
+                <button class="btn-text resetbtn openTextBoxController__resetButton"><!--?lit$410687573$-->Clear My Responses</button>         
+            </div>
+            <!--?lit$410687573$--><hr>
+            <!--?lit$410687573$-->
+                <div class="post-text" tabindex="0">
+                    <!--?lit$410687573$--><span> <span style="padding-right:5px;float:left;font-family:arial;font-size:12px;">© 2017 - 2022 Cisco and/or its affiliates. All rights reserved. Cisco Public</span> </span>
+                </div>
+                   
+        </sgpluse-opentextboxcontroller-view><script></script></body>
+<script>
+    window.addEventListener("load", function () {
+      console.log("loaded");
+      document.querySelectorAll(".answergray").forEach(function (ele) {
+        ele.classList.add("u-display-none");
+      });
+      document.querySelectorAll(".hide-answer").forEach(function (ele) {
+        ele.classList.add("u-display-none");
+      });
+      document.querySelectorAll(".show-answer").forEach(function (ele) {
+        ele.addEventListener("click", function (e) {
+          e.currentTarget.nextElementSibling.classList.remove("u-display-none");
+          e.currentTarget
+            .closest(".question-container")
+            .querySelectorAll(".answergray")
+            .forEach(function (ele) {
+              ele.classList.remove("u-display-none");
+            });
+          ele.classList.add("u-display-none");
+        });
+      });
+      document.querySelectorAll(".hide-answer").forEach(function (ele) {
+        ele.addEventListener("click", function (e) {
+          e.currentTarget.previousElementSibling.classList.remove("u-display-none");
+          e.currentTarget
+            .closest(".question-container")
+            .querySelectorAll(".answergray")
+            .forEach(function (ele) {
+              ele.classList.add("u-display-none");
+            });
+          ele.classList.add("u-display-none");
+        });
+      });
+      var event = new Event("click", {
+        bubbles: true,
+        cancelable: true,
+      });
+      document
+        .querySelectorAll(".openTextBoxController__showButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            e.currentTarget.nextElementSibling.classList.remove("u-display-none");
+            ele.classList.add("u-display-none");
+            document.querySelectorAll(".show-answer").forEach(function (ele) {
+              ele.dispatchEvent(event);
+            });
+          });
+        });
+
+      document
+        .querySelectorAll(".openTextBoxController__hideButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            e.currentTarget.previousElementSibling.classList.remove("u-display-none");
+            ele.classList.add("u-display-none");
+            document.querySelectorAll(".hide-answer").forEach(function (ele) {
+              ele.dispatchEvent(event);
+            });
+          });
+        });
+
+      document
+        .querySelectorAll(".openTextBoxController__resetButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            document.querySelectorAll("textArea").forEach(function (ele) {
+              ele.value = "";
+            });
+          });
+        });
+
+      document
+      .querySelectorAll('textarea')
+      .forEach(function (ele){
+        ele.defaultValue = ele.defaultValue.replace(/<!--.*?-->/g, '');
+      })
+        let checkButtonLabel = "check_button_label_placeHolder";
+        let hideButtonLabel = "hide_button_label_placeHolder";
+        document.querySelectorAll(".check__button").forEach(function (ele) {
+        let answerBox = document.querySelector(".check__solution")
+        if (!answerBox.classList.contains("check__hidden")) {
+          answerBox.classList.add("check__hidden");
+          ele.innerText = checkButtonLabel;
+        }
+          ele.addEventListener("click", function (e) {
+            if (answerBox.classList.contains("check__hidden")) {
+              answerBox.classList.remove("check__hidden")
+              ele.innerText = hideButtonLabel;
+            } else {
+              answerBox.classList.add("check__hidden")
+              ele.innerText = checkButtonLabel;
+            }
+          })
+        })
+    });
+  </script>
+  </html>

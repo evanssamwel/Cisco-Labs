@@ -1,0 +1,914 @@
+<!DOCTYPE html><html><head>
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 1rem;
+      }
+      ol,
+      ul {
+        margin-bottom: 0in;
+      }
+      table {
+        margin-top: 1rem;
+        border: 1px solid gray;
+        width: 7in;
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > .openTableTextBox__table-header-data {
+        text-align: center;
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        margin-left: 0in;
+        text-align: center;
+        line-height: 115%;
+        page-break-after: avoid;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        font-weight: bold;
+        background: #dbe5f1;
+        padding: 0.5rem;
+      }
+      .openTableTextBox__answerText
+        table
+        > thead
+        > tr
+        > .openTableTextBox__table-header-data {
+        background: #f2dbdb !important;
+      }
+      .openTextBox__textArea-container {
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        width: 50%;
+      }
+      .openTableTextBox__fieldset {
+        padding: 5px;
+      }
+      td {
+        margin-top: 3pt;
+        margin-right: 0in;
+        margin-bottom: 3pt;
+        margin-left: 0in;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        width: 98.85pt;
+        border: solid windowtext 1pt;
+        border-top: none;
+        padding: 0.7pt 5.75pt 0.7pt 5.75pt;
+      }
+      textarea {
+        width: 100%;
+      }
+      .answergray {
+        padding: 0.2rem;
+      }
+
+      .openTableTextBox__widget {
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        margin-left: 0.25in;
+      }
+
+      .show-answer,
+      .hide-answer {
+        padding: 0.5rem 1rem;
+        background-color: #3d692b;
+        color: #fff;
+        border: 0px;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .openTextBoxController__button-container {
+        display: flex;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .openTextBoxController__button-container .btn-text {
+        margin: 10px;
+      }
+
+      .btn-text {
+        border: 0px;
+        padding: 0.5rem 1rem;
+        background-color: #3d692b;
+        color: #fff;
+        border-radius: 0;
+        cursor: pointer;
+      }
+
+      .u-display-none {
+        display: none;
+      }
+      .openTextBox__postText, openTableTextBox__postText {
+        margin-top: 0.5rem;
+      }
+      .edit-comment {
+        display: none;
+      }
+      .js-heading-inner {
+        display: none;
+      }
+      .block__title-inner,
+      .article__title-inner {
+        display: block;
+        font-size: 1.5em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+      h2{
+        font-size: 1.25em;
+      }
+      h3{
+        font-size: 1.125em;
+      }
+      .table
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > th {
+        border: solid windowtext 1pt;
+      }
+      table tbody tr th, table thead tr th{
+        border: solid windowtext 1pt;
+        background-color: #d6d8dc;
+      }
+      .openTableTextBox__answerText
+        table
+        > thead
+        > tr
+        > .openTableTextBox__table-header-data {
+        background: #f2dbdb !important;
+      }
+      .command-output > .table-inner > .table-wrapper > .table-widget > table,
+      .command-output
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > td,
+      .command-output
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > th {
+        border: none !important;
+        text-align: right !important;
+      }
+      .simple-table > .table-inner > .table-wrapper{
+        margin-left: 1.5rem;
+      }
+      .openTextBox__widget {
+        margin-left: 1.5rem;
+      }
+      img {
+        width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        margin-left: 3rem;
+      }
+      .answergray {
+        background-color: #ccc;
+      }
+      .openTableTextBox__widget > .answergray {
+        background-color: #fff !important;
+      }
+      li > ul,ol > li{
+        margin-left: 0px !important;
+      }
+      img {
+        width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        margin-left: 3rem;
+      }
+      
+      .component__title{
+        font-family: inherit;
+        font-size: 1.65em;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .component__body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .accessibility-completion-indicator{
+        display: none;
+      }
+
+      .check__hidden {
+        display: none;
+      }
+
+      .check__button {
+        border: none;
+        border-radius: 6px !important;
+        background-color: #6abf4b;
+        color: #fff;
+        min-width: 100px;
+        margin: 0.625rem 0;
+        padding: 0.7rem;
+      }
+
+      .check__widget .check__solution .DevConfigGray {
+        background-color: rgb(214,216,220);
+        font-weight: bold;
+      }
+
+      .check-inner .check__widget .check__solution .DevConfigs {
+        margin: 0px;
+        line-height: 115%;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .check__solution  {
+        line-height: 1.5;
+      }
+      .mcq__inner .mcq__widget .mcq__widget-inner {
+        margin-block: 1rem;
+      }
+      .mcq__inner .mcq__widget .mcq__item {
+        display: flex;
+        gap: 0.2rem;
+      }
+      .mcq__inner .mcq__widget .mcq__item .mcq__item-label .mcq__item-text .screenReader-position-text{
+        display: none;
+      }
+      .opentabletextbox-inner .opentabletextBox__widget .openTableTextBox__answerText.answergray {
+        background-color: transparent;
+      }
+      .openTextBox__inner .openTextBox__widget .answergray.is-graphic-in-openTextBox{
+        background-color: transparent;
+      }
+      .openTextBox__inner .openTextBox__widget .answergray.is-graphic-in-openTextBox img{
+        margin-block: 1rem;
+        margin-left: initial;
+      }
+      .component__content .component__body-inner .pageTracer-h4-title-hide {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        font-size: 0px;
+        color: rgb(var(--neutral-2));
+        font-weight: normal;
+      }
+      .table-inner .table__widget table tr.TableHeading th, .table-inner .table__widget table tr.TableHeading td, .table-inner .table__widget table tr td.TableHeading, .opentabletextbox-table thead tr.TableHeading th, .opentabletextbox-table tbody tr.TableHeading td, .opentabletextbox-table tbody tr td.TableHeading {
+        background-color: #d6d8dc;
+        text-align: center;
+        font-weight: bold;
+      }
+      .component__content .component__body-inner .CMD, .component__content .component__body-inner .CMDOutput, .component__content .component__body-inner .CMDOutput__table{
+        margin-top: 4px;
+        margin-inline-end: 0px;
+        margin-bottom: 4px;
+        margin-inline-start: 30px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      [dir="rtl"] .component__content .component__body-inner .CMDOutput__table span {
+        direction: ltr;
+        display: inline-block;
+      }
+      .openTextBox__inner .openTextBox__widget .CMD, .openTextBox__inner .openTextBox__widget .CMDOutput{
+        margin-top: 4px;
+        margin-inline-end: 0px;
+        margin-bottom: 4px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .openTextBox__inner .openTextBox__widget .DnTbold, .openTextBox__inner .openTextBox__widget .BodyTextL25Bold, .component__content .component__body-inner .BodyTextL25Bold, .component__content .component__body-inner .DnTbold, .table-inner .table__widget table tr .DnTbold {
+        font-weight: bold;
+      }
+    </style>
+
+</head><body><!---->
+            <div class="article f1e451a0-ee50-4fdf-864b-02b0fcdd4faf remove-padding-top remove-padding-bottom ">
+                <div class="article__inner">
+                <div class=" no-adaptive-scroll">
+                    <!--?lit$776690003$-->
+                        <div class=""> 
+                            <base-view type="article" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="article__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="article__header ">
+              <div class="article__header-inner ">
+                  
+                    <!--?lit$776690003$--> <div class=" article__title ">
+                      <!--?lit$776690003$--><heading-view aria-hidden="true" id="f1e451a0-ee50-4fdf-864b-02b0fcdd4faf-heading-view" headingtitle="Lab - Harden a Linux System" modelid="f1e451a0-ee50-4fdf-864b-02b0fcdd4faf" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="js-heading is-incomplete">
+        <div class="js-heading-inner" role="heading" id="article-heading" aria-level="2">
+        <span class="aria-label"> <!--?lit$776690003$-->Incomplete &nbsp;<!--?lit$776690003$-->Lab - Harden a Linux System</span>
+        </div>
+      </div>
+    </heading-view>
+                        <div tabindex="0" role="heading" class="article__title-inner " aria-level="2">
+                        <span class="accessibility-completion-indicator"><!--?lit$776690003$-->Incomplete </span>
+                        <!--?lit$776690003$-->Lab - Harden a Linux System</div>
+                      </div>
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                            <div class="block__container " style="">
+                                <!--?lit$776690003$--><!---->
+                                    <block-view modelid="720d5969-d2ed-49b6-b81e-870d3f11657a" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="720d5969-d2ed-49b6-b81e-870d3f11657a" class="720d5969-d2ed-49b6-b81e-870d3f11657a block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="720d5969-d2ed-49b6-b81e-870d3f11657a" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><text-view modelid="76944302-c5d2-4fd1-aeeb-2647151d6648" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="76944302-c5d2-4fd1-aeeb-2647151d6648" class="component text 76944302-c5d2-4fd1-aeeb-2647151d6648  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$776690003$--><h2>Objectives</h2> <p class="Bulletlevel1"><span lang="RO" style="font-size:7.0pt; line-height:115%;font-family:Webdings">=</span><span>&nbsp;&nbsp;</span><span dir="LTR"></span><span lang="RO">Use a security auditing tool to discover system vulnerabilities.</span></p> <p class="Bulletlevel1"><span lang="RO" style="font-size:7.0pt; line-height:115%;font-family:Webdings">=</span><span>&nbsp;&nbsp;</span><span dir="LTR"></span><span lang="RO">Implement recommended solutions to harden the system.</span></p> <h2>Background / Scenario</h2> <p>Auditing a system for potential misconfigurations or unprotected services is an important aspect of system hardening. Lynis is an open source security auditing tool with an automated set of scripts developed to test a Linux system. Lynis performs an extensive health scan of your system. It includes a detailed report of vulnerabilities and recommended actions. In this lab, you will use Lynis to scan your VM and then implement solutions to harden your system.</p> <h2>Required Resources</h2> <strong> CSE-LABVM </strong> <h2>Instructions</h2> <h1>Part 1: Install and Update Lynis.</h1> <h3>Step 1: Determine the installed Lynis version.</h3> <p class="SubStepAlpha"><span>a.<span>&nbsp;&nbsp;</span></span>Launch the <strong>CSE-LABVM.</strong></p> <p class="SubStepAlpha"><span>b.<span>&nbsp;&nbsp;</span></span>Double-click the <strong>Terminal</strong> icon to open a terminal.</p> <p class="SubStepAlpha"><span>c.<span>&nbsp;&nbsp;</span></span>To determine the latest version provided by CISOfy, enter the following command at the terminal.</p> <p class="CMD">cisco@labvm:~$<strong> sudo apt-cache policy lynis</strong></p> <p class="CMD">lynis:</p> <p class="CMD"><mark>Installed: 3.0.6-100</mark><br><mark>Candidate: 3.0.6-100</mark></p> <p class="CMD">Version table:</p> <p class="CMD"> *** 3.0.6-100 500</p> <p class="CMD">500 https://packages.cisofy.com/community/lynis/deb stable/main amd64 Packages</p> <p class="CMD">500 https://packages.cisofy.com/community/lynis/deb stable/main i386 Packages</p> <p class="CMD">100 /var/lib/dpkg/status</p> <p class="CMD">2.6.2-1 500</p> <p class="CMD">500 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages</p> <p class="CMD">500 http://archive.ubuntu.com/ubuntu focal/universe i386 Packages</p> <p class="SubStepAlpha"><span>d.<span>&nbsp;&nbsp;</span></span>Go to the next part if you have the latest Lynis version.</p> <p>If Lynis is not installed or the latest version is not installed, go to the next step to install Lynis.</p> <h3>Step 2: Install Lynis</h3> <p><strong>Lynis </strong>is security tool for systems running Unix-based OS, such as Linux and macOS. <strong>lynis </strong>will be used later in another activity to harden a Linux system. The application <strong>Lynis </strong>is maintained by <a href="https://cisofy.com/lynis/" target="_blank">CISOfy</a>. In this step, we will add the software repository and install Lynis.</p> <p class="SubStepAlpha"><span>a.<span>&nbsp;&nbsp;</span></span>Copy and paste the following command into a terminal to import the key from the CISOfy keyserver. This key is required to verify the integrity of your download when you download <strong>lynis:</strong></p> <p class="CMD">cisco@labvm:~$ <strong>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 013baa07180c50a7101097ef9de922f1c2fde6c4</strong></p> <p class="SubStepAlpha"><span>b.<span>&nbsp;&nbsp;</span></span>Copy and paste the following command into a terminal to add the <strong>lynis</strong> repository maintained by CISOfy.</p> <p class="CMD">cisco@labvm:~$<strong> echo 'deb https://packages.cisofy.com/community/lynis/deb/ stable main' | sudo tee /etc/apt/sources.list.d/cisofy-lynis.list</strong></p> <p class="SubStepAlpha"><span>c.<span>&nbsp;&nbsp;</span></span>Perform an update after adding a new repository. At the prompt, enter<strong> sudo apt-get update.</strong></p> <p class="SubStepAlpha"><span>d.<span>&nbsp;&nbsp;</span></span>Use the command <strong>apt install</strong> to install Lynis if it is not already installed.</p> <p class="CMD">cisco@labvm:~$ <strong>sudo apt install lynis</strong></p> <p class="CMD">Reading package lists... Done</p> <p class="CMD">Building dependency tree   </p> <p class="CMD">Reading state information... Done</p> <p class="CMD">The following NEW packages will be installed:</p> <p class="CMD">lynis</p> <p class="CMD">0 upgraded, 1 newly installed, 0 to remove and 17 not upgraded.</p> <p class="CMD">Need to get 0 B/262 kB of archives.</p> <p class="CMD">After this operation, 1,681 kB of additional disk space will be used.</p> <p class="CMD">Selecting previously unselected package lynis.</p> <p class="CMD">(Reading database ... 205787 files and directories currently installed.)</p> <p class="CMD">Preparing to unpack .../lynis_3.0.6-100_all.deb ...</p> <p class="CMD">Unpacking lynis (<mark>3.0.6-100</mark>) ...</p> <p class="CMD">Setting up lynis (3.0.6-100) ...</p> <p class="CMD">Processing triggers for man-db (2.9.1-1) ...</p> <p class="SubStepAlpha"><span>e.<span>&nbsp;&nbsp;</span></span>    Perform an upgrade after the installation to ensure that the installed Lynis is latest version. At the prompt, enter <strong> sudo apt-get upgrade.</strong></p> <h3>Part 2: Examine the current version of Lynis.</h3> <p>Change to the Lynis directory, and then enter the <strong> sudo lynis update info </strong> command to check the update information for Lynis. Enter<strong> password</strong> for the sudo password. This command verifies that this is the latest version and updates for the tool at the time of writing of this lab. If the installed Lynis version is not up to date, enter<strong> sudo apt-get upgrade</strong> at the prompt.</p> <p class="CMD">cisco@labvm:~$ <strong>sudo lynis update info</strong></p><p class="CMD">[sudo] password for cisco:<strong> password</strong></p><p class="CMDOutput"><span lang="DE">== Lynis ==</span></p> <p class="CMDOutput"><span lang="DE">Version : 3.0.6</span></p><p class="CMDOutput"><span lang="DE">Status : Up-to-date</span></p><p class="CMDOutput"><span lang="DE">Release date : 2021-07-22</span></p><p class="CMDOutput"><span lang="DE">Project page : https://cisofy.com/lynis/</span></p><p class="CMDOutput"><span lang="DE">Source code : https://github.com/CISOfy/lynis</span></p><p class="CMDOutput"><span lang="DE">Latest package : https://packages.cisofy.com/</span></p><p class="CMDOutput"></p><table>      </table><span lang="DE">2007-2021, CISOfy - https://cisofy.com/lynis/</span><p></p> <h3>Part 3: Run the Lynis tool.</h3> <p class="SubStepAlpha"><span>a.<span>&nbsp;&nbsp;</span></span>Enter the <strong>sudo lynis --auditor cisco</strong> command. You may or may not need to enter <strong>password</strong> as the password again. The scan will take about a minute to run.</p> <p class="CMD">cisco@labvm:~$ <strong>sudo lynis --auditor cisco</strong></p><p class="SubStepAlpha"><span>b.<span>&nbsp;&nbsp;</span></span>You should receive output for a variety of system features starting with<strong> Boot and services</strong> and ending with<strong> Hardening, Custom tests,</strong> and <strong>Plugins (phase 2).</strong> The next section is the <strong>Lynis 3.0.6 Results.</strong> Your results most likely include the two <strong>Warnings</strong> shown below. You may also receive other warnings. In addition, there will be a section with a listing of <strong>Suggestions,</strong> which lists 49 in the example output below. Only the first suggestion is shown.</p> <p class="CMD">[ Lynis 3.0.6 ]</p><p class="CMD">################################################################################</p><p class="CMD">   Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are</p><p class="CMD">   welcome to redistribute it under the terms of the GNU General Public License.</p><p class="CMD">   See the LICENSE file for details about using this software.</p><p class="CMD">  2007-2021, CISOfy - https://cisofy.com/lynis/</p><p class="CMD">  Enterprise support available (compliance, plugins, interface and tools)</p><p class="CMD">################################################################################</p><p class="CMDOutput">[+] Initializing program</p> <p class="CMDOutput">------------------------------------</p> <p class="CMDOutput">- Detecting OS... [ DONE ]</p> <p class="CMDOutput">- Checking profiles... [ DONE ]</p> <p class="CMDOutput"></p> <p class="CMDOutput">[+] Boot and services</p> <p class="CMDOutput">------------------------------------</p> <p class="CMDOutput">- Service Manager [ systemd ]</p> <p class="CMDOutput">- Checking UEFI boot [ DISABLED ]</p> <p class="CMDOutput">- Checking presence GRUB2 [ FOUND ]</p> <p class="CMDOutput"></p> <p class="CMDOutput">[+] Hardening</p> <p class="CMDOutput">------------------------------------</p> <p class="CMDOutput">- Installed compiler(s) [ FOUND ]</p> <p class="CMDOutput">- Installed malware scanner [ NOT FOUND ]</p> <p class="CMDOutput">- Non-native binary formats [ NOT FOUND ]</p> <p class="CMDOutput">[+] Custom tests</p> <p class="CMDOutput">------------------------------------</p> <p class="CMDOutput">- Running custom tests... [ NONE ]</p> <p class="CMDOutput">[+] Plugins (phase 2)</p> <p class="CMDOutput">------------------------------------</p> <p class="CMDOutput"><span style="overflow-wrap: break-word">================================================================================</span></p> <p class="CMDOutput">-[ Lynis 3.0.6 Results ]-</p> <p class="CMDOutput"><span lang="DE" style="color:black;background:yellow">Warnings(2):</span></p> <p class="CMDOutput">----------------------------</p> <p class="CMDOutput"><span lang="DE" style="color:black;background:yellow">! Foundone or more vulnerable packages. [PKGS-7392] </span></p> <p class="CMDOutput"><span lang="DE" style="color:black;background:yellow" "="">https://cisofy.com/lynis/controls/PKGS-7392/</span></p> <p class="CMDOutput"><span lang="DE" style="color:black;background:yellow">!iptables module(s) loaded, but no rules active [FIRE-4512] </span></p> <p class="CMDOutput"><span lang="DE" style="color:black;background:yellow" "="">https://cisofy.com/lynis/controls/FIRE-4512/</span></p> <p class="CMDOutput"><span lang="DE" style="color:black;background:yellow">Suggestions(49):</span></p> <p class="CMDOutput">----------------------------</p> <p class="CMD">* Set a password on GRUB boot loader to prevent altering boot configuration (e.g. boot in single user mode without password) [BOOT-5122]</p><p class="CMD">  https://cisofy.com/lynis/controls/BOOT-5122/</p><p class="CMD"><output omitted=""></output></p><p style="overflow-wrap: break-word">================================================================================</p> <p class="CMD"> Lynis 3.0.6</p><p class="CMD">Auditing, system hardening, and compliance for UNIX-based systems </p><p class="CMD">(Linux, macOS, BSD, and others)</p><p class="CMD"> 2007-2021, CISOfy - https://cisofy.com/lynis/ </p><p class="CMD"> Enterprise support available (compliance, plugins, interface and tools)</p><p style="overflow-wrap: break-word">================================================================================</p> <p class="CMD">[TIP]: Enhance Lynis audits by adding your settings to custom.prf (see /home/cisco/Downloads/lynis/default.prf for all settings)</p><p class="CMD">cisco@labvm:~$</p><h3>Part 4: Review the results of your scan and address any warnings.</h3> <p class="SubStepAlpha"><span>a.<span>&nbsp;&nbsp;</span></span> Scroll to the Results section in the output for your scan.</p></div>
+                      </div>
+                    </div>
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="852507c0-0c09-415a-82d1-c2b5f4c09f79" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="852507c0-0c09-415a-82d1-c2b5f4c09f79" class="852507c0-0c09-415a-82d1-c2b5f4c09f79 block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="852507c0-0c09-415a-82d1-c2b5f4c09f79" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><opentextbox-view modelid="89c72752-654e-4a49-884f-d6a7f3dbb925" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="89c72752-654e-4a49-884f-d6a7f3dbb925" class="component opentextbox 89c72752-654e-4a49-884f-d6a7f3dbb925  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="89c72752-654e-4a49-884f-d6a7f3dbb925" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$776690003$--> <div class="openTextBox__preText"><!--?lit$776690003$--><p class="SubStepAlpha"> How many Warnings did you receive? </p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$776690003$--><!--?lit$776690003$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$776690003$-->
+                      <!--?lit$776690003$--><p>Answers will vary. During testing for this lab, there were 2 warnings.</p><p>-[ Lynis 3.0.6 Results ]-</p><p>Warnings (2):</p><p>----------------------------</p><p>! Found one or more vulnerable packages. [PKGS-7392]</p><p>https://cisofy.com/lynis/controls/PKGS-7392/</p><p>! iptables module(s) loaded, but no rules active [FIRE-4512]</p><p>https://cisofy.com/lynis/controls/FIRE-4512/</p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$776690003$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$776690003$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$776690003$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="2efd2d7e-329c-4374-bb1d-1be5fe889705" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="2efd2d7e-329c-4374-bb1d-1be5fe889705" class="2efd2d7e-329c-4374-bb1d-1be5fe889705 block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="2efd2d7e-329c-4374-bb1d-1be5fe889705" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><opentextbox-view modelid="03c3058a-7a64-4e86-829b-47218bddfbd4" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="03c3058a-7a64-4e86-829b-47218bddfbd4" class="component opentextbox 03c3058a-7a64-4e86-829b-47218bddfbd4  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="03c3058a-7a64-4e86-829b-47218bddfbd4" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$776690003$--> <div class="openTextBox__preText"><!--?lit$776690003$--><p class="SubStepAlpha"> ¿Cuántas sugerencias recibió? </p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$776690003$--><!--?lit$776690003$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$776690003$-->
+                      <!--?lit$776690003$--><p class="BodyTextL50Answer"><span class="AnswerGray"><span style="border: none"><span style="border: none">Answers will vary. There were 49 suggestions in this example.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$776690003$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$776690003$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$776690003$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="666c4b85-ff3f-4b3a-8ebd-fc98523fdba8" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="666c4b85-ff3f-4b3a-8ebd-fc98523fdba8" class="666c4b85-ff3f-4b3a-8ebd-fc98523fdba8 block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="666c4b85-ff3f-4b3a-8ebd-fc98523fdba8" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><text-view modelid="49578c63-8cbf-4e24-acf9-b1dcca8abf3a" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="49578c63-8cbf-4e24-acf9-b1dcca8abf3a" class="component text 49578c63-8cbf-4e24-acf9-b1dcca8abf3a  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$776690003$--><p class="SubStepAlpha"><span>b.<span>&nbsp;&nbsp;</span></span>You should address the warnings. Pick at least one warning and research how to fix that problem. You can use the link provided in the warning output as a starting point for addressing a warning. But you may also need to use your internet research skills to track down additional information.</p></div>
+                      </div>
+                    </div>
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="ce0a3f1a-c5c8-4b6b-aa9d-4f1913484c24" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="ce0a3f1a-c5c8-4b6b-aa9d-4f1913484c24" class="ce0a3f1a-c5c8-4b6b-aa9d-4f1913484c24 block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="ce0a3f1a-c5c8-4b6b-aa9d-4f1913484c24" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><opentextbox-view modelid="a2f069be-8d53-4a8e-a4a2-a9f0c318140b" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="a2f069be-8d53-4a8e-a4a2-a9f0c318140b" class="component opentextbox a2f069be-8d53-4a8e-a4a2-a9f0c318140b  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="a2f069be-8d53-4a8e-a4a2-a9f0c318140b" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$776690003$--> <div class="openTextBox__preText"><!--?lit$776690003$--><p class="BodyTextL50"> Which warning are you addressing? </p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$776690003$--><!--?lit$776690003$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$776690003$-->
+                      <!--?lit$776690003$--><p class="BodyTextL50Answer"><span class="AnswerGray"><span style="border: none"><span style="border: none"> Answers will vary. However, both of the issues shown here can be addressed relatively quickly.</span></span></span></p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$776690003$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$776690003$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$776690003$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="706a240f-4bb3-43c4-b13f-0e1630403aff" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="706a240f-4bb3-43c4-b13f-0e1630403aff" class="706a240f-4bb3-43c4-b13f-0e1630403aff block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="706a240f-4bb3-43c4-b13f-0e1630403aff" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><opentextbox-view modelid="3eddf2a2-4acb-427e-bd1e-fcd2b95047d7" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="component">
+          <div class="component__inner openTextBox__inner">
+            <div data-socialgoodpulse-id="3eddf2a2-4acb-427e-bd1e-fcd2b95047d7" class="component opentextbox 3eddf2a2-4acb-427e-bd1e-fcd2b95047d7  is-undefined   ">
+              <div class="component__header-container">
+                <div data-socialgoodpulse-id="3eddf2a2-4acb-427e-bd1e-fcd2b95047d7" class="opentabletextbox ">
+                  <base-view type="component" lowercase_component="openTextBox" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header openTextBox__header">
+              <div class="component__header-inner openTextBox__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+              </div>
+                  <div class="component__widget openTextBox__widget question-container">
+                      <!--?lit$776690003$--> <div class="openTextBox__preText"><!--?lit$776690003$--><p class="BodyTextL50" style="page-break-after: avoid"> What is your solution? </p></div>                         
+      
+                      <div class="openTextBox__textArea-container">
+                          <fieldset class="openTextBox__fieldset" tabindex="0">
+                          <legend class="openTextBox__legend">
+                            <!--?lit$776690003$--><!--?lit$776690003$-->Answer Area<!--?-->
+                          </legend>
+                          <textarea class="openTextBox__textArea" rows="3" name="answerArea" placeholder="Type your answer here." aria-label="Type your answer here.">&lt;!----&gt;&lt;!----&gt;</textarea>
+                          </fieldset>
+                      </div>
+                      <div tabindex="0" class="openTextBox__answerText answergray  hide">
+                        <!--?lit$776690003$-->
+                      <!--?lit$776690003$--><p>Answers will vary. However, for the issues listed here visit the recommended link for the first warning, https://cisofy.com/lynis/controls/PKGS-7392/. You will see two commands list: apt-get update and apt-get upgrade. Run these two commands as root to address the vulnerabilities warning. Then run Lynis again to see that the warning is no longer listed.</p><p>sudo apt-get update</p><p>sudo apt-get upgrade</p><p>sudo lynis --auditor cisco</p><p>When testing this lab, Firefox needed to be updated with the 'apt-get upgrade' command before Lynis would remove the warning.</p><p>cisco@labvm:~$ sudo apt-get upgrade</p><p>Reading package lists... Done</p><p>Building dependency tree</p><p>Reading state information... Done</p><p>Calculating upgrade... Done</p><p>The following packages will be upgraded:</p><p><mark>firefox</mark></p><p>1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</p><p>Need to get 56.4 MB of archives.</p><p>After this operation, 953 kB of additional disk space will be used.</p><p>Do you want to continue? [Y/n] y</p><p>Get:1 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 firefox amd64 86.0.1+build1-0ubuntu0.20.04.1 [56.4 MB]</p><p>Fetched 56.4 MB in 1min 57s (482 kB/s)</p><p>(Reading database ... 205661 files and directories currently installed.)</p><p>Preparing to unpack .../firefox_86.0.1+build1-0ubuntu0.20.04.1_amd64.deb ...</p><p>Unpacking firefox (86.0.1+build1-0ubuntu0.20.04.1) over (86.0+build3-0ubuntu0.20.04.1) ...</p><p>Setting up firefox (86.0.1+build1-0ubuntu0.20.04.1) ...</p><p>Please restart all running instances of firefox, or you will experience problems.</p><p>Processing triggers for man-db (2.9.1-1) ...</p><p>Processing triggers for bamfdaemon (0.5.3+18.04.20180207.2-0ubuntu2) ...</p><p>Rebuilding /usr/share/applications/bamf-2.index...</p><p>Processing triggers for desktop-file-utils (0.24-1ubuntu3) ...</p><p>Processing triggers for mime-support (3.64ubuntu1) ...</p><p>Processing triggers for hicolor-icon-theme (0.17-2) ...</p><p>Processing triggers for gnome-menus (3.36.0-1ubuntu1) ...</p><p>cisco@labvm:~$</p><p>Note: You may also need to update the Linux distro if you still get a warning. Run the 'sudo apt-get dist-upgrade' command to install the latest Linux version. You will need to reboot the system before Lynis will give you a clean report for 'vulnerable packages'.</p><p>To address the second issue about iptables, begin your research by visiting the recommended link for the warning, https://cisofy.com/lynis/controls/FIRE-4512/. Notice that it says to either disable the firewall or populate it with an appropriate firewall. This must mean that iptables has something to do with the VM's firewall. To research further, search for 'ubuntu iptables howto'. The first link in the search engine results should take you directly to a page at help.ubuntu.com. If you read through the page, you will discover that 'Ubuntu comes with ufw - a program for managing the iptables….' This page also has some recommended rules for a basic firewall. The following is a good start on a basic firewall.</p><p>sudo iptables -A INPUT -i lo -j ACCEPT</p><p>sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</p><p>sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT</p><p>sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT</p><p>sudo iptables -A INPUT -j DROP</p><p>sudo iptables-save</p><p>However, if you run the 'sudo lynis --auditor cisco' command again, you will get the same warning. You configured the rules but they are still not active. This is probably because the firewall is not active. Scroll back to the top of the Ubuntu page and click the link for 'ufw' or search for 'ubuntu ufw'. The link will take you to a page that discusses Uncomplicated Firewall (ufw), which is the default firewall configuration tool Ubuntu uses to manage iptables. Read through the page to learn more about ufw. If you check the ufw status, you will see that it is inactive. Might this be why you are still getting a warning from Lynis? Enable the firewall and then run Lynis again. Under Results, you should now see the message, 'Great, no warnings'.</p><p>cisco@labvm:~$ sudo ufw status</p><p>Status: inactive</p><p>cisco@labvm:~$ sudo ufw enable</p><p>Firewall is active and enabled on system startup</p><p>cisco@labvm:~$ sudo lynis --auditor cisco</p><p>&lt;output omitted&gt;</p><p style="overflow-wrap: break-word">================================================================================</p><p lynis="">-[ Lynis 3.0.6 Results ]-</p><p><mark>Great, no warnings</mark></p><p>&lt;output omitted&gt;</p><p>cisco@labvm:~$</p>
+                    </div>
+
+                      <div class="btn__container">                        
+                        <button class="btn-text openTextBox__showButton show-answer show"><!--?lit$776690003$-->Show Answer</button>     
+                        <button class="btn-text openTextBox__hideButton hide-answer hide"><!--?lit$776690003$-->Hide Answer</button>                    
+                      </div>
+                      <!--?lit$776690003$--><!--?-->
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </opentextbox-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="b1dd30d9-2e71-423c-8c53-8285333849a5" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="block" style="width: 14.2857%;"><!---->
+                
+                <div data-socialgoodpulse-id="b1dd30d9-2e71-423c-8c53-8285333849a5" class="b1dd30d9-2e71-423c-8c53-8285333849a5 block  ">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="b1dd30d9-2e71-423c-8c53-8285333849a5" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$776690003$--><!----><text-view modelid="3da77b3d-6ed6-40f1-9a20-d6bb8f860c88" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="3da77b3d-6ed6-40f1-9a20-d6bb8f860c88" class="component text 3da77b3d-6ed6-40f1-9a20-d6bb8f860c88  is-full   ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$776690003$--><h3></h3></div>
+                      </div>
+                    </div>
+                  <!--?lit$776690003$-->
+                  <!--?lit$776690003$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!---->
+                            </div>
+                        </div>
+                        <!--?lit$776690003$-->
+                    </div>
+                </div>
+            </div>
+        <sgpluse-opentextboxcontroller-view modelid="" is-touch="false" fullscreen="true" device="large" browser="Chrome" os="windows" dir="ltr" location="page" theme="dark" orientation="landscape" themetype="article-base-theme"><!---->
+            <div class="openTextBoxController__button-container">
+                <button tabindex="0" class="btn-text showhidebtn openTextBoxController__showButton show-answer show"><!--?lit$776690003$-->Show All Answers</button>    
+                <button tabindex="0" class="btn-text showhidebtn openTextBoxController__hideButton hide-answer hide"><!--?lit$776690003$-->Hide All Answers</button>    
+                <button class="btn-text resetbtn openTextBoxController__resetButton"><!--?lit$776690003$-->Clear My Responses</button>         
+            </div>
+            <!--?lit$776690003$--><hr>
+            <!--?lit$776690003$-->
+                <div class="post-text" tabindex="0">
+                    <!--?lit$776690003$--><span><span style=" padding-right: 5px; float: left; font-family: arial; font-size: 12px;">© 2017 - 2022 Cisco and/or its affiliates. All rights reserved.Cisco Public</span></span>
+                </div>
+                   
+        </sgpluse-opentextboxcontroller-view><script></script></body>
+<script>
+    window.addEventListener("load", function () {
+      console.log("loaded");
+      document.querySelectorAll(".answergray").forEach(function (ele) {
+        ele.classList.add("u-display-none");
+      });
+      document.querySelectorAll(".hide-answer").forEach(function (ele) {
+        ele.classList.add("u-display-none");
+      });
+      document.querySelectorAll(".show-answer").forEach(function (ele) {
+        ele.addEventListener("click", function (e) {
+          e.currentTarget.nextElementSibling.classList.remove("u-display-none");
+          e.currentTarget
+            .closest(".question-container")
+            .querySelectorAll(".answergray")
+            .forEach(function (ele) {
+              ele.classList.remove("u-display-none");
+            });
+          ele.classList.add("u-display-none");
+        });
+      });
+      document.querySelectorAll(".hide-answer").forEach(function (ele) {
+        ele.addEventListener("click", function (e) {
+          e.currentTarget.previousElementSibling.classList.remove("u-display-none");
+          e.currentTarget
+            .closest(".question-container")
+            .querySelectorAll(".answergray")
+            .forEach(function (ele) {
+              ele.classList.add("u-display-none");
+            });
+          ele.classList.add("u-display-none");
+        });
+      });
+      var event = new Event("click", {
+        bubbles: true,
+        cancelable: true,
+      });
+      document
+        .querySelectorAll(".openTextBoxController__showButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            e.currentTarget.nextElementSibling.classList.remove("u-display-none");
+            ele.classList.add("u-display-none");
+            document.querySelectorAll(".show-answer").forEach(function (ele) {
+              ele.dispatchEvent(event);
+            });
+          });
+        });
+
+      document
+        .querySelectorAll(".openTextBoxController__hideButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            e.currentTarget.previousElementSibling.classList.remove("u-display-none");
+            ele.classList.add("u-display-none");
+            document.querySelectorAll(".hide-answer").forEach(function (ele) {
+              ele.dispatchEvent(event);
+            });
+          });
+        });
+
+      document
+        .querySelectorAll(".openTextBoxController__resetButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            document.querySelectorAll("textArea").forEach(function (ele) {
+              ele.value = "";
+            });
+          });
+        });
+
+      document
+      .querySelectorAll('textarea')
+      .forEach(function (ele){
+        ele.defaultValue = ele.defaultValue.replace(/<!--.*?-->/g, '');
+      })
+        let checkButtonLabel = "check_button_label_placeHolder";
+        let hideButtonLabel = "hide_button_label_placeHolder";
+        document.querySelectorAll(".check__button").forEach(function (ele) {
+        let answerBox = document.querySelector(".check__solution")
+        if (!answerBox.classList.contains("check__hidden")) {
+          answerBox.classList.add("check__hidden");
+          ele.innerText = checkButtonLabel;
+        }
+          ele.addEventListener("click", function (e) {
+            if (answerBox.classList.contains("check__hidden")) {
+              answerBox.classList.remove("check__hidden")
+              ele.innerText = hideButtonLabel;
+            } else {
+              answerBox.classList.add("check__hidden")
+              ele.innerText = checkButtonLabel;
+            }
+          })
+        })
+    });
+  </script>
+  </html>
